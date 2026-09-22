@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/css/style.css"><title>{{ title or "WhatsApp Ordering" }}</title></head><body>
+<div class="store-header"><div><h1>{{ settings.shop_name }}</h1><p>{{ settings.address or "Order online and confirm on WhatsApp" }}</p></div><button id="cartBtn" class="cart-btn">Cart <span id="cartCount">0</span></button></div>
+<main class="container">
+<input id="search" class="search" placeholder="Search products...">
+<div class="chips"><button class="chip active" data-category="all">All</button>{% for c in categories %}<button class="chip" data-category="{{ c }}">{{ c }}</button>{% endfor %}</div>
+<div id="products" class="grid">
+{% for p in products %}<article class="card product" data-name="{{ p.name|lower }}" data-category="{{ p.category }}">
+<div class="category">{{ p.category }}</div><h3>{{ p.name }}</h3><p>{{ p.note or "" }}</p>
+<div class="product-bottom"><strong>₹{{ "%.2f"|format(p.price|float) }} / {{ p.unit }}</strong><button class="primary add" data-id="{{ p.id }}" data-name="{{ p.name }}" data-price="{{ p.price }}" data-unit="{{ p.unit }}">+ Add</button></div></article>{% endfor %}
+</div></main>
+<div id="drawer" class="drawer"><div class="drawer-panel"><button id="closeCart" class="close">×</button><h2>Your cart</h2><div id="cartItems"></div><div class="total-row"><b>Subtotal</b><b id="cartSubtotal">₹0.00</b></div>
+<hr><h3>Checkout</h3><form id="checkoutForm">
+<label>Name<input name="customer_name" required></label><label>Phone<input name="customer_phone" required inputmode="tel"></label>
+<label>Fulfilment<select name="fulfillment" id="fulfillment"><option value="delivery">Delivery</option><option value="pickup">Pickup</option></select></label>
+<label id="addressWrap">Delivery address<textarea name="address"></textarea></label><label>Notes<textarea name="notes"></textarea></label>
+<button class="primary full" type="submit">Place order & open WhatsApp</button><p id="formError" class="error"></p></form></div></div>
+<script src="/static/js/store.js"></script></body></html>

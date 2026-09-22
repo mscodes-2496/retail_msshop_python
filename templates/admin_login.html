@@ -1,0 +1,4 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/css/style.css"><title>{{ title or "WhatsApp Ordering" }}</title></head><body>
+<main class="login"><h1>Shop Admin</h1><p>Sign in with the owner account created in Supabase Authentication.</p>{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post"><label>Email<input type="email" name="email" required></label><label>Password<input type="password" name="password" required></label><button class="primary full">Sign in</button></form></main></body></html>

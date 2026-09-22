@@ -1,0 +1,4 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/static/css/style.css"><title>{{ title or "WhatsApp Ordering" }}</title></head><body>
+<main class="center-box"><div class="success">✓</div><h1>Order created</h1><p>Order <b>#{{ short }}</b> has been saved.</p><p>Total: <b>₹{{ total }}</b></p>
+{% if wa %}<a class="primary button-link" href="{{ wa }}">Continue to WhatsApp</a>{% endif %}<a class="secondary button-link" href="/">Back to store</a></main></body></html>
