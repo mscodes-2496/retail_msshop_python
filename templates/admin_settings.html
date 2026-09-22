@@ -1,9 +1,0 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="/static/css/style.css"><title>{{ title or "WhatsApp Ordering" }}</title></head><body><header class="admin-nav"><a href="/admin/orders">Orders</a><a href="/admin/catalogue">Catalogue</a><a href="/admin/settings">Settings</a><a href="/" target="_blank">Store</a><a href="/admin/logout">Logout</a></header>
-<main class="container narrow"><h1>Shop settings</h1><form method="post" class="panel">
-<label>Shop name<input name="shop_name" value="{{settings.shop_name}}" required></label>
-<label>WhatsApp number<input name="whatsapp_number" value="{{settings.whatsapp_number}}" required><small>Country code + number, e.g. 919876543210</small></label>
-<label>Address<textarea name="address">{{settings.address or ""}}</textarea></label>
-<label>Delivery fee<input type="number" step=".01" min="0" name="delivery_fee" value="{{settings.delivery_fee}}"></label>
-<label>Free delivery above<input type="number" step=".01" min="0" name="min_order_free_delivery" value="{{settings.min_order_free_delivery}}"></label>
-<button class="primary">Save settings</button></form></main></body></html>

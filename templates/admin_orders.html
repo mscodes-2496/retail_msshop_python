@@ -1,8 +1,0 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="/static/css/style.css"><title>{{ title or "WhatsApp Ordering" }}</title></head><body><header class="admin-nav"><a href="/admin/orders">Orders</a><a href="/admin/catalogue">Catalogue</a><a href="/admin/settings">Settings</a><a href="/" target="_blank">Store</a><a href="/admin/logout">Logout</a></header>
-<main class="container"><div class="page-title"><h1>Orders</h1><span>{{ orders|length }} shown</span></div>
-<div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Fulfilment</th><th>Total</th><th>Status</th><th>Created</th></tr></thead><tbody>
-{% for o in orders %}<tr><td><b>#{{ o.id[:8]|upper }}</b></td><td>{{ o.customer_name }}<br><small>{{ o.customer_phone }}</small></td>
-<td>{% for i in o["items"] %}{{ i.quantity }}× {{ i.name }}<br>{% endfor %}</td><td>{{ o.fulfillment }}{% if o.address %}<br><small>{{ o.address }}</small>{% endif %}</td>
-<td>₹{{ "%.2f"|format(o.total|float) }}</td><td><form method="post" action="/admin/orders/{{ o.id }}/status"><select name="status" onchange="this.form.submit()">{% for s in ["new","confirmed","preparing","ready","delivered","cancelled"] %}<option value="{{s}}" {% if o.status==s %}selected{% endif %}>{{s}}</option>{% endfor %}</select></form></td><td><small>{{ o.created_at[:16].replace("T"," ") }}</small></td></tr>{% endfor %}
-</tbody></table></div></main></body></html>
